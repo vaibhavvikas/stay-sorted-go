@@ -1,4 +1,4 @@
-package middlewares
+package middleware
 
 import (
 	"net/http"
@@ -46,7 +46,7 @@ func ValidateToken(SignedToken string) (claims *SignedDetails, msg string) {
 		return []byte(os.Getenv("JWT_KEY")), nil
 	})
 	if err != nil {
-		msg = err.Error()
+		msg = "Authenticaltion Failed!"
 		return claims, msg
 	}
 	claims, ok := token.Claims.(*SignedDetails)

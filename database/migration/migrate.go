@@ -8,5 +8,7 @@ import (
 func Migrate(db *gorm.DB) {
 	db.AutoMigrate(
 		entities.User{},
+		entities.House{},
+		entities.HousePicture{},
 	)
 }
