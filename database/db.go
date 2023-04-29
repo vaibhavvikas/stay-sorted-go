@@ -2,22 +2,21 @@ package database
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/vaibhavvikas/stay-sorted/database/migration"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-const (
-	host     = "localhost"
-	port     = 5432
-	user     = "postgres"
-	password = "postgres"
-	dbName   = "stay_sorted"
-)
-
 func DatabaseConnection() *gorm.DB {
-	sqlInfo := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbName)
+	host := os.Getenv("DB_HOST")
+	port := os.Getenv("DB_PORT")
+	user := os.Getenv("DB_USER")
+	password := os.Getenv("DB_PASSWORD")
+	dbName := os.Getenv("DB_NAME")
+
+	sqlInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbName)
 
 	db, err := gorm.Open(postgres.Open(sqlInfo), &gorm.Config{})
 	if err != nil {
