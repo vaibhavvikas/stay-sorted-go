@@ -36,11 +36,11 @@ Stay-Sorted provides the following API endpoints:
 - /api/users/:user_pid: returns details for the specific user
 - /api/houses/create: create a listing for a specific property
 - /api/houses/:house_pid: returns details for a specific property (requires used to be logged in)
+- /api/houses: returns a list of all houses.
 
 ### ToDo:
 - /api/houses/search: searches for properties based on location and amenities
-- /api/houses: returns a list of all houses.
-- /api/houses/:id: returns details for a specific house.
+- Reservations related api
 
 ## License
 Stay-Sorted is licensed under the MIT License. See the LICENSE file for more information.
