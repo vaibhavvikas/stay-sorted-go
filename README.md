@@ -23,7 +23,7 @@ To install and run Stay-Sorted on your local machine, follow these steps:
 - Clone the repository: git clone https://github.com/vaibhavvikas/stay-sorted-go.git
 - Install Go, PostgreSQL, and any other dependencies needed by the application
 - Create a new PostgreSQL database for the application
-- Copy the .env.example file to .env and update the database connection information
+- Update the database connection information in database
 - Start the application: go run .
 - The application should now be running at http://localhost:5000.
 
