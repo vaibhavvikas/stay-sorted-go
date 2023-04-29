@@ -30,13 +30,17 @@ To install and run Stay-Sorted on your local machine, follow these steps:
 ## API Endpoints
 Stay-Sorted provides the following API endpoints:
 
+### Completed
 - /api/users/signup: creates a new user account
 - /api/users/login: logs in an existing user and returns a JWT token
-- /api/users/:id: returns details for the specific user
-- /api/houses/:id: returns details for a specific property
-- /api/properties/search: searches for properties based on location and amenities
-- /api/reservations: returns a list of all reservations made by the logged-in user
-- /api/reservations/:id: returns details for a specific reservation made by the logged-in user
+- /api/users/:user_pid: returns details for the specific user
+- /api/houses/create: create a listing for a specific property
+- /api/houses/:house_pid: returns details for a specific property (requires used to be logged in)
+
+### ToDo:
+- /api/houses/search: searches for properties based on location and amenities
+- /api/houses: returns a list of all houses.
+- /api/houses/:id: returns details for a specific house.
 
 ## License
 Stay-Sorted is licensed under the MIT License. See the LICENSE file for more information.
