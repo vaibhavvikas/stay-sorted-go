@@ -1,17 +1,34 @@
 package models
 
 type CreateHouseReq struct {
-	HouseName   string `json:"house_name"`
-	City        string `json:"city"`
-	State       string `json:"state"`
-	Country     string `json:"country"`
-	Pincode     string `json:"pincode"`
-	Description string `json:"description"`
-	Bedrooms    int    `json:"bedrooms"`
-	Bathrooms   int    `json:"bathrooms"`
-	Price       int    `json:"price"`
-	Amenities   string `json:"amenities"`
-	Pictures    []struct {
-		URL string `json:"url"`
-	} `json:"pictures"`
+	HouseName     string   `json:"house_name"`
+	Address       string   `json:"address"`
+	City          string   `json:"city"`
+	State         string   `json:"state"`
+	Country       string   `json:"country"`
+	Pincode       string   `json:"pincode"`
+	Description   string   `json:"description"`
+	Bedrooms      int      `json:"bedrooms"`
+	Bathrooms     int      `json:"bathrooms"`
+	Price         int      `json:"price"`
+	SquareFootage int      `json:"square_footage"`
+	Amenities     []string `json:"amenities"`
+	Pictures      []string `json:"pictures"`
+}
+
+type HouseResponse struct {
+	HousePid      string   `json:"house_pid"`
+	HouseName     string   `json:"house_name"`
+	Address       string   `json:"address"`
+	City          string   `json:"city"`
+	State         string   `json:"state"`
+	Country       string   `json:"country"`
+	Pincode       string   `json:"pincode"`
+	Description   string   `json:"description"`
+	Bedrooms      int      `json:"bedrooms"`
+	Bathrooms     int      `json:"bathrooms"`
+	Price         int      `json:"price"`
+	SquareFootage int      `json:"square_footage"`
+	Amenities     []string `json:"amenities"`
+	Pictures      []string `json:"pictures"`
 }

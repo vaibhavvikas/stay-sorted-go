@@ -10,6 +10,7 @@ import (
 	"github.com/vaibhavvikas/stay-sorted/models/entities"
 	"github.com/vaibhavvikas/stay-sorted/repository/user_repository"
 	"github.com/vaibhavvikas/stay-sorted/utils"
+	"gorm.io/gorm"
 )
 
 type UserServiceImpl struct {
@@ -49,6 +50,9 @@ func (u UserServiceImpl) CreateUser(ctx *gin.Context, userReq models.CreateUserR
 func (u UserServiceImpl) GetUserByPid(ctx *gin.Context, userPid string) (entities.User, error) {
 	user, err := u.UserRepository.GetUserByPid(ctx, userPid)
 	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return user, getInvalidUserError(userPid)
+		}
 		return user, errors.Wrap(err, "[GetUserByPid]")
 	}
 	return user, errors.Wrap(err, "[GetUserByPid]")
@@ -86,5 +90,12 @@ func (u UserServiceImpl) AuthenticateUser(ctx *gin.Context, userLoginReq models.
 func getInvalidPasswordError() error {
 	return &models.AppError{
 		Message: "Invalid Password",
+	}
+}
+
+func getInvalidUserError(pid string) error {
+	return &models.AppError{
+		Message: "User with the following pid does not exist in the system: " + pid,
+		Param:   "user_pid",
 	}
 }

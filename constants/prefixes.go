@@ -1,7 +1,11 @@
 package constants
 
 var Prefixes = struct {
-	USER string
+	USER         string
+	House        string
+	HousePicture string
 }{
-	USER: "usr",
+	USER:         "usr",
+	House:        "hse",
+	HousePicture: "hsp",
 }

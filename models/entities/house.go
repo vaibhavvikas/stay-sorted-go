@@ -19,7 +19,7 @@ type House struct {
 	State         string         `gorm:"column:state;not null;"`
 	Country       string         `gorm:"column:country;not null;"`
 	Pincode       string         `gorm:"column:pincode;not null;"`
-	HousePictures []HousePicture `gorm:"foreignKey:house_pid"`
+	HousePictures []HousePicture `gorm:"foreignKey:HousePid;references:Pid;constraint:OnUpdate:CASCADE,OnDelete:CASCADE"`
 	CreatedAt     time.Time      `gorm:"column:created_at;type:timestamp;default:current_timestamp"`
 	UpdatedAt     time.Time      `gorm:"column:updated_at;type:timestamp;default:current_timestamp"`
 }
