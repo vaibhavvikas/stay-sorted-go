@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"
 	"github.com/vaibhavvikas/stay-sorted/constants"
+	"github.com/vaibhavvikas/stay-sorted/models"
 	"github.com/vaibhavvikas/stay-sorted/models/entities"
 	"github.com/vaibhavvikas/stay-sorted/utils"
 	"gorm.io/gorm"
@@ -51,6 +52,19 @@ func (h HouseRepositoryImpl) GetAllHouses(ctx *gin.Context) ([]entities.House, e
 		return houses, errors.Wrap(err, "[HouseRepositoryImpl][GetAllHouses]")
 	}
 	return houses, errors.Wrap(err, "[HouseRepositoryImpl][GetAllHouses]")
+}
+
+func (h HouseRepositoryImpl) GetFilteredHouses(ctx *gin.Context, filters models.HouseFilter) ([]entities.House, error) {
+	var houses []entities.House
+	db := ctx.MustGet("DB").(*gorm.DB)
+
+	query := db.Preload("HousePictures")
+	query = addOptionalQueryParamsForHouse(query, filters)
+	err := query.Find(&houses).Error
+	if err != nil {
+		return houses, errors.Wrap(err, "[HouseRepositoryImpl][GetFilteredHouses]")
+	}
+	return houses, errors.Wrap(err, "[HouseRepositoryImpl][GetFilteredHouses]")
 }
 
 func (h HouseRepositoryImpl) RemoveHouse(ctx *gin.Context, pid string) error {

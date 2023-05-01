@@ -57,3 +57,20 @@ func (h HouseControllerImpl) GetAllHouses(ctx *gin.Context) {
 	housesResponse := transformers.GetAllHousesResponse(houses)
 	ctx.IndentedJSON(http.StatusCreated, housesResponse)
 }
+
+func (h HouseControllerImpl) GetFilteredHouses(ctx *gin.Context) {
+	filterHouseReq, err := house_validator.ValidateGetFilteredHouseRequest(ctx)
+	if err != nil {
+		ctx.Error(err)
+		return
+	}
+
+	houses, err := h.houseService.GetFilteredHouses(ctx, filterHouseReq)
+	if err != nil {
+		ctx.Error(err)
+		return
+	}
+
+	housesResponse := transformers.GetAllHousesResponse(houses)
+	ctx.IndentedJSON(http.StatusCreated, housesResponse)
+}

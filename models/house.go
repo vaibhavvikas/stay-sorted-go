@@ -32,3 +32,15 @@ type HouseResponse struct {
 	Amenities     []string `json:"amenities"`
 	Pictures      []string `json:"pictures"`
 }
+
+type HouseFilter struct {
+	City          string
+	State         string
+	Country       string
+	Pincode       string
+	Bedrooms      int
+	Bathrooms     int
+	MinPrice      int
+	MaxPrice      int
+	SquareFootage int
+}

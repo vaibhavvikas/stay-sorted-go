@@ -84,4 +84,12 @@ func (h HouseServiceImpl) GetAllHouses(ctx *gin.Context) ([]entities.House, erro
 	return houses, errors.Wrap(err, "[GetAllHouses]")
 }
 
+func (h HouseServiceImpl) GetFilteredHouses(ctx *gin.Context, filters models.HouseFilter) ([]entities.House, error) {
+	houses, err := h.houseRepository.GetFilteredHouses(ctx, filters)
+	if err != nil {
+		return houses, errors.Wrap(err, "[GetFilteredHouses]")
+	}
+	return houses, errors.Wrap(err, "[GetFilteredHouses]")
+}
+
 // func (h HouseServiceImpl) UpdateHouse(ctx *gin.Context, housePid string) (entities.House, error) {}

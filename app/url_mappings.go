@@ -32,6 +32,7 @@ func Router(db *gorm.DB) *gin.Engine {
 	houseRouter := baseRouter.Group("/houses")
 	{
 		houseRouter.GET("", house_controller.HouseControllerImpl{}.GetAllHouses)
+		houseRouter.GET("/filter", house_controller.HouseControllerImpl{}.GetFilteredHouses)
 		houseRouter.GET("/:house_pid", house_controller.HouseControllerImpl{}.GetHouse)
 	}
 	houseRouter.Use(middleware.Authentication())

@@ -7,9 +7,9 @@ Stay-Sorted is a web application that allows users to create and manage property
 ### Completed
 - User authentication: users can sign up, log in, and log out of the application
 - Property management: users can create, update, and delete their property listings
+- Property search: users can search for available properties based on location and amenities
 
 ### TODO:
-- Property search: users can search for available properties based on location and amenities
 - Reservation handling: users can make reservations for available properties and view their reservations
 - Admin panel: an admin user can manage all the listings and reservations in the application
 
@@ -50,9 +50,9 @@ Stay-Sorted provides the following API endpoints:
 - /api/houses/create: create a listing for a specific property
 - /api/houses/:house_pid: returns details for a specific property (requires used to be logged in)
 - /api/houses: returns a list of all houses.
+- /api/houses/filter: filters for properties based on various params sucg as city, pincode, min/max price etc.
 
 ### TODO:
-- /api/houses/search: searches for properties based on location and amenities
 - Reservations related api
 
 ## License

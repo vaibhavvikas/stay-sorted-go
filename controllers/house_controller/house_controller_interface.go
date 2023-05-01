@@ -6,4 +6,5 @@ type HouseControllerInterface interface {
 	CreateHouse(ctx *gin.Context)
 	GetHouse(ctx *gin.Context)
 	GetAllHouses(ctx *gin.Context)
+	GetFilteredHouses(ctx *gin.Context)
 }
